@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --animate-spin-slow: spin 12s linear infinite;
+}
