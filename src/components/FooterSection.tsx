@@ -7,20 +7,6 @@ export const FooterSection: React.FC = () => {
   return (
     <footer className="w-full max-w-[1400px] mx-auto mt-6 mb-6 rounded-[40px] bg-gradient-to-b from-[#eff5ff] to-[#e2efff] p-2 pb-0 flex flex-col shadow-sm border border-slate-200/50 overflow-hidden">
       
-      {/* Top CTA Area */}
-      <div className="flex flex-col items-center justify-center py-20 px-6 text-center relative z-10">
-        <h2 className="text-4xl md:text-[52px] leading-[1.1] font-medium text-slate-900 mb-5 tracking-tight">
-          Contact for OTC Sales
-        </h2>
-        <p className="text-slate-600 text-[15px] md:text-[17px] mb-8 max-w-lg mx-auto leading-relaxed">
-          For the discount up to 16% from the market price of Greencoin GEC. No insurance needed.
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <a href="#footer-contact" className="bg-white text-slate-800 px-8 py-3.5 rounded-full font-medium text-[15px] hover:bg-slate-50 transition-colors shadow-sm border border-slate-200/50 inline-block">
-            Contact Us
-          </a>
-        </div>
-      </div>
 
       {/* Bottom White Card */}
       <div className="bg-[#fafafa] rounded-t-[36px] rounded-b-[40px] p-10 lg:p-14 w-full shadow-[0_-10px_40px_rgba(0,0,0,0.02)] relative z-20">
@@ -102,7 +88,6 @@ export const FooterSection: React.FC = () => {
                 <li><Link to="/#about" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">About</Link></li>
                 <li><Link to="/#roadmap" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">Roadmap</Link></li>
                 <li><Link to="/whitepaper" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">Whitepaper</Link></li>
-                <li><Link to="/otc" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">OTC</Link></li>
                 <li><Link to="/#allocation" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">Allocation</Link></li>
               </ul>
             </div>

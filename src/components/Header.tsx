@@ -70,13 +70,7 @@ export const Header: React.FC<HeaderProps> = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-slate-900"></span>
             <span>WHITEPAPER</span>
           </Link>
-          <Link
-            to="/otc"
-            className="hover:text-slate-600 transition-colors flex items-center gap-2"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-900"></span>
-            <span>OTC</span>
-          </Link>
+
           <Link
             to="/#allocation"
             className="hover:text-slate-600 transition-colors flex items-center gap-2"
@@ -130,14 +124,7 @@ export const Header: React.FC<HeaderProps> = () => {
             <span className="w-2 h-2 rounded-full bg-slate-900"></span>
             <span>WHITEPAPER</span>
           </Link>
-          <Link
-            to="/otc"
-            className="hover:text-slate-600 transition-colors flex items-center gap-3 text-slate-900 font-bold"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <span className="w-2 h-2 rounded-full bg-slate-900"></span>
-            <span>OTC</span>
-          </Link>
+
           <Link
             to="/#allocation"
             className="hover:text-slate-600 transition-colors flex items-center gap-3 text-slate-900 font-bold"
