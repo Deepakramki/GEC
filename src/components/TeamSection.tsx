@@ -59,12 +59,12 @@ export const TeamSection: React.FC = () => {
         <div className="team-card relative rounded-[32px] overflow-hidden h-[400px] lg:h-[440px] group shadow-sm bg-slate-100 border border-slate-200/50">
           <img
             src="/team/arun.jpg"
-            alt="Arun Dev Pilappan"
+            alt="Arun Dev Pillappan"
             className="absolute inset-0 w-full h-full object-cover object-[center_15%] scale-105 transition-transform duration-700 group-hover:scale-115"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/90 via-[#111827]/20 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-center flex flex-col items-center">
-            <h3 className="text-lg font-medium text-white mb-1">Arun Dev Pilappan</h3>
+            <h3 className="text-lg font-medium text-white mb-1">Arun Dev Pillappan</h3>
             <p className="text-[13px] text-slate-400 mb-3">CEO</p>
             <a href="https://www.linkedin.com/in/arun-p-7b233a260/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#0055ff] hover:text-white transition-all backdrop-blur-sm" aria-label="LinkedIn">
               <Linkedin className="w-4 h-4 fill-current" />
