@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Linkedin } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Linkedin, RotateCw } from 'lucide-react';
 
 interface TeamMember {
   id: string;
@@ -7,6 +7,7 @@ interface TeamMember {
   role: string;
   image: string;
   linkedin: string;
+  bio: string;
   objectPosition: string;
   scale: string;
 }
@@ -18,8 +19,9 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'Managing Director',
     image: '/team/werner.jpg',
     linkedin: 'https://www.linkedin.com/in/werner-kr%C3%A4utlein?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
+    bio: 'Over 25 years of global executive leadership in sustainable technology and corporate governance, pioneering blockchain-driven environmental impact and European regulatory compliance.',
     objectPosition: 'center 15%',
-    scale: 'scale-100',
+    scale: 'scale-105',
   },
   {
     id: 'robert',
@@ -27,8 +29,9 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'Vice President',
     image: '/team/robert.jpg',
     linkedin: 'https://www.linkedin.com/in/johanneswillamjenner?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
+    bio: 'Seasoned venture architect with extensive expertise in international business development, renewable energy transition, and cross-border strategic partnerships across Europe.',
     objectPosition: 'center 15%',
-    scale: 'scale-100',
+    scale: 'scale-105',
   },
   {
     id: 'arun',
@@ -36,8 +39,9 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'CEO',
     image: '/team/arun.jpg',
     linkedin: 'https://www.linkedin.com/in/arun-p-7b233a260/',
+    bio: "Visionary founder driving GreenCoin's mission to bridge decentralized finance with real-world carbon reduction, empowering communities toward a cleaner, verifiable future.",
     objectPosition: 'center 15%',
-    scale: 'scale-100',
+    scale: 'scale-105',
   },
   {
     id: 'deepak',
@@ -45,8 +49,9 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'CTO and Project Manager',
     image: '/team/deepak.jpg',
     linkedin: 'https://www.linkedin.com/in/deepakramki?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
+    bio: 'Lead systems architect specializing in high-throughput blockchain networks, smart contract security, and full-stack decentralized infrastructure for green assets.',
     objectPosition: 'center 10%',
-    scale: 'scale-115',
+    scale: 'scale-120',
   },
   {
     id: 'inba',
@@ -54,137 +59,237 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'CMO and Co Operation Manager',
     image: '/team/inba.jpg',
     linkedin: 'https://www.linkedin.com/in/inbazer?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
+    bio: 'Brand strategist and operational leader spearheading global community engagement, viral marketing strategies, and strategic alliances across eco-conscious ecosystems.',
     objectPosition: 'center 15%',
-    scale: 'scale-105',
+    scale: 'scale-110',
   },
 ];
 
 export const TeamSection: React.FC = () => {
-  // Center card (Arun Dev Pillappan, CEO) is active by default
-  const [activeId, setActiveId] = useState<string>('arun');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // Toggle card flip
+  const toggleFlip = (id: string) => {
+    setFlippedCards((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  // Scroll tracking for progress bar
+  const handleScroll = () => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    if (maxScroll > 0) {
+      const progress = (el.scrollLeft / maxScroll) * 100;
+      setScrollProgress(progress);
+      setCanScrollLeft(el.scrollLeft > 10);
+      setCanScrollRight(el.scrollLeft < maxScroll - 10);
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const scrollAmount = direction === 'left' ? -340 : 340;
+    el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      handleScroll();
+      el.addEventListener('scroll', handleScroll, { passive: true });
+      return () => el.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
 
   return (
     <section
       id="about"
-      className="w-full max-w-[1400px] mx-auto mt-6 bg-[#FAF7F2] rounded-[40px] p-6 sm:p-10 lg:p-14 shadow-sm border border-stone-200/60 transition-all duration-300"
+      className="w-full max-w-[1400px] mx-auto mt-6 bg-[#FAF7F2] rounded-[40px] p-6 sm:p-10 lg:p-14 shadow-sm border border-stone-200/60 transition-all duration-300 relative overflow-hidden"
     >
-      {/* Centered Header */}
-      <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-14">
+      {/* Decorative Subtle Background Orbit Ring */}
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full border border-indigo-200/40 pointer-events-none opacity-60" />
+
+      {/* Header matching the reference design */}
+      <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-14 relative z-10">
         <span className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider uppercase bg-stone-200/70 text-stone-700 border border-stone-300/60 mb-5 shadow-xs">
           Leadership Team
         </span>
 
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-stone-900 leading-[1.12] tracking-tight mb-4">
-          The Minds.
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-medium text-stone-900 leading-[1.18] tracking-tight">
+          Led by visionaries from the
           <br />
-          Behind GreenCoin.
+          <span className="font-serif italic font-normal text-indigo-950">
+            forefront of green innovation
+          </span>
         </h2>
 
-        <p className="text-sm sm:text-base text-stone-600 font-normal leading-relaxed max-w-xl mx-auto mb-7">
-          Meet our dedicated leadership team steering GreenCoin towards a sustainable, decentralized, and greener tomorrow.
+        <p className="text-sm sm:text-base text-stone-600 font-normal leading-relaxed max-w-xl mx-auto mt-4">
+          Meet our dedicated leadership team steering GreenCoin towards a sustainable, decentralized, and verifiable future.
         </p>
+      </div>
 
-        {/* Small CTA Pill */}
-        <div className="flex justify-center items-center">
-          <a
-            href="#footer"
-            className="inline-flex items-center px-5 py-2 rounded-full bg-stone-200/80 hover:bg-stone-300/90 text-stone-800 text-xs sm:text-sm font-medium transition-colors shadow-xs"
-          >
-            Connect With Our Team
-          </a>
+      {/* Swipe Module Carousel with Left / Right Navigation */}
+      <div className="relative z-10 px-2 sm:px-6">
+        {/* Left Arrow Button */}
+        <button
+          onClick={() => scroll('left')}
+          disabled={!canScrollLeft}
+          className={`absolute -left-2 sm:-left-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-slate-950 text-white border border-white/20 shadow-xl flex items-center justify-center backdrop-blur-md transition-all duration-300 ${
+            !canScrollLeft ? 'opacity-30 cursor-not-allowed' : 'hover:scale-105 active:scale-95'
+          }`}
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* Right Arrow Button */}
+        <button
+          onClick={() => scroll('right')}
+          disabled={!canScrollRight}
+          className={`absolute -right-2 sm:-right-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-slate-950 text-white border border-white/20 shadow-xl flex items-center justify-center backdrop-blur-md transition-all duration-300 ${
+            !canScrollRight ? 'opacity-30 cursor-not-allowed' : 'hover:scale-105 active:scale-95'
+          }`}
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        {/* Scrollable Container */}
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-5 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {TEAM_MEMBERS.map((member) => {
+            const isFlipped = !!flippedCards[member.id];
+
+            return (
+              <div
+                key={member.id}
+                className="w-[280px] sm:w-[310px] lg:w-[320px] h-[470px] sm:h-[490px] shrink-0 snap-center [perspective:1000px] cursor-pointer select-none group"
+                onClick={() => toggleFlip(member.id)}
+              >
+                {/* 3D Flipping Card Body */}
+                <div
+                  className={`relative w-full h-full rounded-[28px] transition-transform duration-700 [transform-style:preserve-3d] shadow-xl ${
+                    isFlipped ? '[transform:rotateY(180deg)]' : ''
+                  }`}
+                >
+                  {/* FRONT FACE: Deep Royal Blue Studio Portrait */}
+                  <div
+                    className="absolute inset-0 w-full h-full rounded-[28px] overflow-hidden [backface-visibility:hidden] border border-indigo-900/30 shadow-lg flex flex-col justify-end p-6"
+                    style={{
+                      background:
+                        'radial-gradient(circle at 50% 55%, #1e3a8a 0%, #0d1a45 45%, #070d24 100%)',
+                    }}
+                  >
+                    {/* Portrait Image with subtle blue rim lighting */}
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className={`absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-90 transition-transform duration-700 group-hover:scale-105 ${member.scale}`}
+                      style={{ objectPosition: member.objectPosition }}
+                    />
+
+                    {/* Gradient Overlay for Studio Lighting & Text Contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#060a1d] via-[#060a1d]/30 to-transparent pointer-events-none" />
+
+                    {/* Subtle Blue Rim Light Glow */}
+                    <div className="absolute inset-0 bg-radial from-blue-600/20 via-transparent to-transparent pointer-events-none" />
+
+                    {/* Flip Indicator Tag */}
+                    <div className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white/80 border border-white/15 transition-all">
+                      <RotateCw className="w-3.5 h-3.5" />
+                    </div>
+
+                    {/* Bottom Member Info */}
+                    <div className="relative z-10 text-left">
+                      <h3 className="text-xl sm:text-[22px] font-medium text-white tracking-tight leading-tight">
+                        {member.name}
+                      </h3>
+                      <p className="text-xs sm:text-[13px] text-indigo-300 font-normal tracking-wide mt-1">
+                        {member.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* BACK FACE: Deep Blue with Grid Pattern & Bio */}
+                  <div
+                    className="absolute inset-0 w-full h-full rounded-[28px] overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] border border-indigo-500/30 shadow-2xl p-7 flex flex-col justify-between"
+                    style={{
+                      backgroundColor: '#0f1738',
+                      backgroundImage:
+                        'linear-gradient(to right, rgba(99, 102, 241, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(99, 102, 241, 0.12) 1px, transparent 1px)',
+                      backgroundSize: '28px 28px',
+                    }}
+                  >
+                    {/* Top Member Header */}
+                    <div>
+                      <div className="flex items-start justify-between mb-1">
+                        <h3 className="text-xl sm:text-[22px] font-medium text-white tracking-tight leading-tight">
+                          {member.name}
+                        </h3>
+                        <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white/80 border border-white/15 shrink-0 ml-2">
+                          <RotateCw className="w-3.5 h-3.5" />
+                        </div>
+                      </div>
+                      <p className="text-xs sm:text-[13px] text-indigo-300 font-normal tracking-wide">
+                        {member.role}
+                      </p>
+                    </div>
+
+                    {/* Bio Description */}
+                    <div className="my-auto py-2">
+                      <p className="text-xs sm:text-[13px] text-indigo-100/85 leading-relaxed font-light">
+                        {member.bio}
+                      </p>
+                    </div>
+
+                    {/* Bottom Action: LinkedIn Connect Pill */}
+                    <div className="pt-2">
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-indigo-600 hover:bg-[#0055ff] text-white border border-indigo-400/30 text-xs font-medium backdrop-blur-sm transition-all duration-300 shadow-md group/btn"
+                      >
+                        <span>Connect on LinkedIn</span>
+                        <Linkedin className="w-3.5 h-3.5 fill-current text-white" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom Swipe Progress Indicator Bar */}
+        <div className="mt-8 flex justify-center items-center">
+          <div className="w-48 h-1 bg-stone-300/60 rounded-full overflow-hidden relative">
+            <div
+              className="h-full bg-slate-900 rounded-full transition-all duration-150 ease-out"
+              style={{
+                width: '35%',
+                transform: `translateX(${(scrollProgress * 1.85)}%)`,
+              }}
+            />
+          </div>
         </div>
       </div>
 
-      {/* 5-Card Full-Cover Portrait Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 lg:gap-5">
-        {TEAM_MEMBERS.map((member) => {
-          const isActive = activeId === member.id;
-
-          return (
-            <div
-              key={member.id}
-              onClick={() => setActiveId(member.id)}
-              onMouseEnter={() => setActiveId(member.id)}
-              className={`group relative rounded-[28px] overflow-hidden h-[440px] sm:h-[470px] lg:h-[490px] cursor-pointer transition-all duration-500 bg-slate-900 border ${
-                isActive
-                  ? 'ring-2 ring-stone-900/30 shadow-2xl scale-[1.01]'
-                  : 'hover:shadow-xl border-stone-300/40'
-              }`}
-            >
-              {/* Full-Cover Member Portrait Image */}
-              <img
-                src={member.image}
-                alt={member.name}
-                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${member.scale}`}
-                style={{ objectPosition: member.objectPosition }}
-              />
-
-              {/* Clean Top Gradient for Text Legibility (Neutral Dark to Transparent) */}
-              <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10 pointer-events-none" />
-
-              {/* Clean Bottom Gradient for Grounding and Pill Contrast */}
-              <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10 pointer-events-none" />
-
-              {/* Top Text: Name & Role */}
-              <div className="relative z-20 pt-6 px-4 text-center">
-                <h3 className="text-[15px] sm:text-[16px] font-medium text-white leading-snug tracking-tight drop-shadow-sm">
-                  {member.name}
-                </h3>
-                <p className="text-[11px] sm:text-[12px] text-slate-200/90 font-normal tracking-wide mt-0.5 drop-shadow-sm">
-                  {member.role}
-                </p>
-              </div>
-
-              {/* Bottom Interactive Pill (Delphi-style audio/connect bar) */}
-              <div
-                className={`absolute bottom-5 left-1/2 -translate-x-1/2 z-20 w-max transition-all duration-300 ${
-                  isActive
-                    ? 'opacity-100 translate-y-0 scale-100'
-                    : 'opacity-0 translate-y-2 scale-95 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100'
-                }`}
-              >
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-2.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-black/75 hover:bg-[#0055ff] text-white border border-white/20 shadow-xl backdrop-blur-md transition-all duration-300 group/btn"
-                  aria-label={`${member.name} LinkedIn`}
-                >
-                  {/* Animated Audio Equalizer Bars */}
-                  <div className="flex items-center gap-[2.5px] h-3">
-                    <span
-                      className="w-[2.5px] h-2.5 bg-sky-400 rounded-full animate-pulse"
-                      style={{ animationDuration: '0.8s', animationDelay: '0ms' }}
-                    />
-                    <span
-                      className="w-[2.5px] h-3.5 bg-emerald-400 rounded-full animate-pulse"
-                      style={{ animationDuration: '0.8s', animationDelay: '150ms' }}
-                    />
-                    <span
-                      className="w-[2.5px] h-2 bg-amber-400 rounded-full animate-pulse"
-                      style={{ animationDuration: '0.8s', animationDelay: '300ms' }}
-                    />
-                    <span
-                      className="w-[2.5px] h-3 bg-indigo-400 rounded-full animate-pulse"
-                      style={{ animationDuration: '0.8s', animationDelay: '450ms' }}
-                    />
-                  </div>
-
-                  <span className="text-[11px] sm:text-xs font-medium tracking-tight text-slate-200 group-hover/btn:text-white">
-                    Connect
-                  </span>
-
-                  <Linkedin className="w-3.5 h-3.5 fill-current text-slate-300 group-hover/btn:text-white" />
-                </a>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
       {/* Section Footer Sub-Bar */}
-      <div className="mt-14 sm:mt-16 text-center">
+      <div className="mt-12 sm:mt-14 text-center relative z-10">
         <span className="inline-block px-4 py-1.5 rounded-full bg-stone-200/60 text-stone-600 text-xs font-medium mb-3">
           Why GreenCoin
         </span>
