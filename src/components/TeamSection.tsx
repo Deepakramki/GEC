@@ -176,12 +176,26 @@ export const TeamSection: React.FC = () => {
               >
                 {/* 3D Flipping Card Body */}
                 <div
-                  className={`relative w-full h-full rounded-[28px] transition-transform duration-700 [transform-style:preserve-3d] shadow-xl ${
+                  className={`relative w-full h-full rounded-[28px] transition-transform duration-700 shadow-xl ${
                     isFlipped ? '[transform:rotateY(180deg)]' : ''
                   }`}
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    WebkitTransformStyle: 'preserve-3d',
+                  }}
                 >
                   {/* FRONT FACE: Real Color Portrait with Clean Dark Bottom Gradient */}
-                  <div className="absolute inset-0 w-full h-full rounded-[28px] overflow-hidden [backface-visibility:hidden] border border-slate-300/40 shadow-lg bg-slate-900 flex flex-col justify-end p-6">
+                  <div
+                    className={`absolute inset-0 w-full h-full rounded-[28px] overflow-hidden border border-slate-300/40 shadow-lg bg-slate-900 flex flex-col justify-end p-6 transition-opacity duration-300 ${
+                      isFlipped ? 'opacity-0 pointer-events-none z-0' : 'opacity-100 z-10'
+                    }`}
+                    style={{
+                      backfaceVisibility: 'hidden',
+                      WebkitBackfaceVisibility: 'hidden',
+                      transform: 'rotateY(0deg)',
+                      WebkitTransform: 'rotateY(0deg)',
+                    }}
+                  >
                     {/* Portrait Image in 100% Real, Natural Colors (no blend mode or tint) */}
                     <img
                       src={member.image}
@@ -211,12 +225,18 @@ export const TeamSection: React.FC = () => {
 
                   {/* BACK FACE: Deep Blue with Grid Pattern & Bio */}
                   <div
-                    className="absolute inset-0 w-full h-full rounded-[28px] overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] border border-indigo-500/30 shadow-2xl p-7 flex flex-col justify-between"
+                    className={`absolute inset-0 w-full h-full rounded-[28px] overflow-hidden border border-indigo-500/30 shadow-2xl p-7 flex flex-col justify-between transition-opacity duration-300 ${
+                      isFlipped ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 pointer-events-none z-0'
+                    }`}
                     style={{
                       backgroundColor: '#0f1738',
                       backgroundImage:
                         'linear-gradient(to right, rgba(99, 102, 241, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(99, 102, 241, 0.12) 1px, transparent 1px)',
                       backgroundSize: '28px 28px',
+                      backfaceVisibility: 'hidden',
+                      WebkitBackfaceVisibility: 'hidden',
+                      transform: 'rotateY(180deg)',
+                      WebkitTransform: 'rotateY(180deg)',
                     }}
                   >
                     {/* Top Member Header */}
