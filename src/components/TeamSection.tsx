@@ -21,7 +21,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/werner-kr%C3%A4utlein?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
     bio: 'Over 25 years of global executive leadership in sustainable technology and corporate governance, pioneering blockchain-driven environmental impact and European regulatory compliance.',
     objectPosition: 'center 15%',
-    scale: 'scale-105',
+    scale: 'scale-100',
   },
   {
     id: 'robert',
@@ -31,7 +31,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/johanneswillamjenner?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
     bio: 'Seasoned venture architect with extensive expertise in international business development, renewable energy transition, and cross-border strategic partnerships across Europe.',
     objectPosition: 'center 15%',
-    scale: 'scale-105',
+    scale: 'scale-100',
   },
   {
     id: 'arun',
@@ -41,7 +41,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/arun-p-7b233a260/',
     bio: "Visionary founder driving GreenCoin's mission to bridge decentralized finance with real-world carbon reduction, empowering communities toward a cleaner, verifiable future.",
     objectPosition: 'center 15%',
-    scale: 'scale-105',
+    scale: 'scale-100',
   },
   {
     id: 'deepak',
@@ -51,7 +51,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/deepakramki?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
     bio: 'Lead systems architect specializing in high-throughput blockchain networks, smart contract security, and full-stack decentralized infrastructure for green assets.',
     objectPosition: 'center 10%',
-    scale: 'scale-120',
+    scale: 'scale-115',
   },
   {
     id: 'inba',
@@ -61,7 +61,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/inbazer?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
     bio: 'Brand strategist and operational leader spearheading global community engagement, viral marketing strategies, and strategic alliances across eco-conscious ecosystems.',
     objectPosition: 'center 15%',
-    scale: 'scale-110',
+    scale: 'scale-105',
   },
 ];
 
@@ -114,27 +114,23 @@ export const TeamSection: React.FC = () => {
   return (
     <section
       id="about"
-      className="w-full max-w-[1400px] mx-auto mt-6 bg-[#FAF7F2] rounded-[40px] p-6 sm:p-10 lg:p-14 shadow-sm border border-stone-200/60 transition-all duration-300 relative overflow-hidden"
+      className="w-full max-w-[1400px] mx-auto mt-6 bg-[#FAF7F2] rounded-[40px] p-6 sm:p-10 lg:p-14 shadow-sm border border-slate-200/60 transition-all duration-300 relative overflow-hidden"
     >
       {/* Decorative Subtle Background Orbit Ring */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full border border-indigo-200/40 pointer-events-none opacity-60" />
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full border border-slate-300/40 pointer-events-none opacity-50" />
 
-      {/* Header matching the reference design */}
+      {/* Header with normal site font */}
       <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-14 relative z-10">
-        <span className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider uppercase bg-stone-200/70 text-stone-700 border border-stone-300/60 mb-5 shadow-xs">
+        <span className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider uppercase bg-slate-200/70 text-slate-700 border border-slate-300/60 mb-5 shadow-xs">
           Leadership Team
         </span>
 
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-medium text-stone-900 leading-[1.18] tracking-tight">
-          Led by visionaries from the
-          <br />
-          <span className="font-serif italic font-normal text-indigo-950">
-            forefront of green innovation
-          </span>
+        <h2 className="text-3xl sm:text-5xl lg:text-[56px] font-medium text-slate-900 leading-tight tracking-tight">
+          Explore our comprehensive leadership team
         </h2>
 
-        <p className="text-sm sm:text-base text-stone-600 font-normal leading-relaxed max-w-xl mx-auto mt-4">
-          Meet our dedicated leadership team steering GreenCoin towards a sustainable, decentralized, and verifiable future.
+        <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-xl mx-auto mt-4">
+          Meet our dedicated leadership team steering GreenCoin towards a sustainable, decentralized, and greener tomorrow.
         </p>
       </div>
 
@@ -184,39 +180,30 @@ export const TeamSection: React.FC = () => {
                     isFlipped ? '[transform:rotateY(180deg)]' : ''
                   }`}
                 >
-                  {/* FRONT FACE: Deep Royal Blue Studio Portrait */}
-                  <div
-                    className="absolute inset-0 w-full h-full rounded-[28px] overflow-hidden [backface-visibility:hidden] border border-indigo-900/30 shadow-lg flex flex-col justify-end p-6"
-                    style={{
-                      background:
-                        'radial-gradient(circle at 50% 55%, #1e3a8a 0%, #0d1a45 45%, #070d24 100%)',
-                    }}
-                  >
-                    {/* Portrait Image with subtle blue rim lighting */}
+                  {/* FRONT FACE: Real Color Portrait with Clean Dark Bottom Gradient */}
+                  <div className="absolute inset-0 w-full h-full rounded-[28px] overflow-hidden [backface-visibility:hidden] border border-slate-300/40 shadow-lg bg-slate-900 flex flex-col justify-end p-6">
+                    {/* Portrait Image in 100% Real, Natural Colors (no blend mode or tint) */}
                     <img
                       src={member.image}
                       alt={member.name}
-                      className={`absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-90 transition-transform duration-700 group-hover:scale-105 ${member.scale}`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${member.scale}`}
                       style={{ objectPosition: member.objectPosition }}
                     />
 
-                    {/* Gradient Overlay for Studio Lighting & Text Contrast */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#060a1d] via-[#060a1d]/30 to-transparent pointer-events-none" />
-
-                    {/* Subtle Blue Rim Light Glow */}
-                    <div className="absolute inset-0 bg-radial from-blue-600/20 via-transparent to-transparent pointer-events-none" />
+                    {/* Smooth Bottom Gradient for Name & Role Legibility */}
+                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none" />
 
                     {/* Flip Indicator Tag */}
-                    <div className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white/80 border border-white/15 transition-all">
+                    <div className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md flex items-center justify-center text-white/90 border border-white/20 transition-all shadow-sm">
                       <RotateCw className="w-3.5 h-3.5" />
                     </div>
 
-                    {/* Bottom Member Info */}
+                    {/* Bottom Member Info (Normal clean font) */}
                     <div className="relative z-10 text-left">
-                      <h3 className="text-xl sm:text-[22px] font-medium text-white tracking-tight leading-tight">
+                      <h3 className="text-xl sm:text-[22px] font-medium text-white tracking-tight leading-tight drop-shadow-sm">
                         {member.name}
                       </h3>
-                      <p className="text-xs sm:text-[13px] text-indigo-300 font-normal tracking-wide mt-1">
+                      <p className="text-xs sm:text-[13px] text-slate-300 font-normal tracking-wide mt-1 drop-shadow-sm">
                         {member.role}
                       </p>
                     </div>
@@ -249,7 +236,7 @@ export const TeamSection: React.FC = () => {
 
                     {/* Bio Description */}
                     <div className="my-auto py-2">
-                      <p className="text-xs sm:text-[13px] text-indigo-100/85 leading-relaxed font-light">
+                      <p className="text-xs sm:text-[13px] text-indigo-100/90 leading-relaxed font-normal">
                         {member.bio}
                       </p>
                     </div>
@@ -276,7 +263,7 @@ export const TeamSection: React.FC = () => {
 
         {/* Bottom Swipe Progress Indicator Bar */}
         <div className="mt-8 flex justify-center items-center">
-          <div className="w-48 h-1 bg-stone-300/60 rounded-full overflow-hidden relative">
+          <div className="w-48 h-1 bg-slate-300/60 rounded-full overflow-hidden relative">
             <div
               className="h-full bg-slate-900 rounded-full transition-all duration-150 ease-out"
               style={{
@@ -290,10 +277,10 @@ export const TeamSection: React.FC = () => {
 
       {/* Section Footer Sub-Bar */}
       <div className="mt-12 sm:mt-14 text-center relative z-10">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-stone-200/60 text-stone-600 text-xs font-medium mb-3">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-slate-200/60 text-slate-600 text-xs font-medium mb-3">
           Why GreenCoin
         </span>
-        <p className="text-xs sm:text-sm text-stone-500 font-medium tracking-wide uppercase">
+        <p className="text-xs sm:text-sm text-slate-500 font-medium tracking-wide uppercase">
           Sustainable • Transparent • Decentralized
         </p>
       </div>
