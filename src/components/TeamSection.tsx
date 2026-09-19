@@ -21,7 +21,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/werner-kr%C3%A4utlein?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
     bio: 'Over 25 years of global executive leadership in sustainable technology and corporate governance, pioneering blockchain-driven environmental impact and European regulatory compliance.',
     objectPosition: 'center 15%',
-    scale: 'scale-100',
+    scale: 'scale-100 group-hover:scale-105',
   },
   {
     id: 'robert',
@@ -31,7 +31,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/johanneswillamjenner?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
     bio: 'Seasoned venture architect with extensive expertise in international business development, renewable energy transition, and cross-border strategic partnerships across Europe.',
     objectPosition: 'center 15%',
-    scale: 'scale-100',
+    scale: 'scale-100 group-hover:scale-105',
   },
   {
     id: 'arun',
@@ -40,8 +40,8 @@ const TEAM_MEMBERS: TeamMember[] = [
     image: '/team/arun.jpg',
     linkedin: 'https://www.linkedin.com/in/arun-p-7b233a260/',
     bio: "Visionary founder driving GreenCoin's mission to bridge decentralized finance with real-world carbon reduction, empowering communities toward a cleaner, verifiable future.",
-    objectPosition: 'center 15%',
-    scale: 'scale-100',
+    objectPosition: 'center 12%',
+    scale: 'scale-[1.30] group-hover:scale-[1.35]',
   },
   {
     id: 'deepak',
@@ -51,7 +51,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/deepakramki?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
     bio: 'Lead systems architect specializing in high-throughput blockchain networks, smart contract security, and full-stack decentralized infrastructure for green assets.',
     objectPosition: 'center 10%',
-    scale: 'scale-115',
+    scale: 'scale-[1.18] group-hover:scale-[1.24]',
   },
   {
     id: 'inba',
@@ -61,7 +61,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/inbazer?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
     bio: 'Brand strategist and operational leader spearheading global community engagement, viral marketing strategies, and strategic alliances across eco-conscious ecosystems.',
     objectPosition: 'center 15%',
-    scale: 'scale-105',
+    scale: 'scale-105 group-hover:scale-110',
   },
 ];
 
@@ -186,7 +186,7 @@ export const TeamSection: React.FC = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${member.scale}`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ${member.scale}`}
                       style={{ objectPosition: member.objectPosition }}
                     />
 
