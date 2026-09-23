@@ -10,7 +10,6 @@ import { MissionVisionSection } from '../components/MissionVisionSection';
 import { StagesOfWork } from '../components/StagesOfWork';
 import { HumanitarianSection } from '../components/HumanitarianSection';
 import { AllocationSection } from '../components/AllocationSection';
-import { TeamSection } from '../components/TeamSection';
 import { VestingSection } from '../components/VestingSection';
 import { FooterSection } from '../components/FooterSection';
 import { FAQSection } from '../components/FAQSection';
@@ -80,9 +79,6 @@ export const HomePage = () => {
 
       {/* Allocation Section */}
       <ScrollReveal><AllocationSection /></ScrollReveal>
-
-      {/* Team Section */}
-      <ScrollReveal><TeamSection /></ScrollReveal>
 
       {/* Vesting Section */}
       <ScrollReveal><VestingSection /></ScrollReveal>
