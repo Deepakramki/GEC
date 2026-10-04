@@ -3,7 +3,7 @@ import React from 'react';
 
 export const HumanitarianSection: React.FC = () => {
   return (
-    <section className="w-full max-w-[1400px] mx-auto mt-6 bg-[#0B1021] rounded-[40px] p-6 sm:p-10 lg:p-12 shadow-sm overflow-hidden">
+    <section id="about" className="w-full max-w-[1400px] mx-auto mt-6 bg-[#0B1021] rounded-[40px] p-6 sm:p-10 lg:p-12 shadow-sm overflow-hidden">
       <div className="hum-header flex flex-col items-center mb-16 text-center">
         <span className="bg-white/5 text-slate-300 px-5 py-2 rounded-full text-[13px] font-medium mb-8 border border-white/10">
           Humanitarian Impact
