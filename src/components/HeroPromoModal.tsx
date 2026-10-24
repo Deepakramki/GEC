@@ -119,7 +119,10 @@ export const HeroPromoModal: React.FC<HeroPromoModalProps> = ({ isOpen, onClose 
         </button>
 
         {/* Carousel Slide Track */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
+        <div
+          className="relative aspect-[1024/552] w-full overflow-hidden bg-slate-950"
+          style={{ aspectRatio: '1024 / 552' }}
+        >
           <div
             className="flex w-full h-full transition-transform duration-600 ease-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -135,10 +138,10 @@ export const HeroPromoModal: React.FC<HeroPromoModalProps> = ({ isOpen, onClose 
                   <img
                     src={slide.image}
                     alt={slide.alt}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
-                  {/* Subtle Gradient Shadow on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Subtle Gradient Shadow at bottom on Hover */}
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </a>
               </div>
             ))}

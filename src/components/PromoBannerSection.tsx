@@ -92,8 +92,11 @@ export const PromoBannerSection: React.FC = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* 16:9 Aspect Ratio Slide Container (Fits Native Poster Dimensions Exactly Without Scaling) */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-950">
+      {/* 1024:552 Aspect Ratio Slide Container (Matches exact poster resolution to eliminate black letterbox space) */}
+      <div
+        className="relative w-full aspect-[1024/552] overflow-hidden bg-slate-950"
+        style={{ aspectRatio: '1024 / 552' }}
+      >
         {/* Sliding Track */}
         <div
           className="flex w-full h-full transition-transform duration-700 ease-out"
@@ -107,15 +110,15 @@ export const PromoBannerSection: React.FC = () => {
                 rel="noopener noreferrer"
                 className="block w-full h-full cursor-pointer relative"
               >
-                {/* Fit Image Without Scaling */}
+                {/* Full-bleed image matching 1024x552 without any letterbox black space */}
                 <img
                   src={slide.image}
                   alt={slide.alt}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
 
-                {/* Subtle Edge Lighting & Contrast Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
+                {/* Bottom Shadow Only for Indicator/CTA Readability (Top edge remains completely clean) */}
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none" />
               </a>
             </div>
           ))}
