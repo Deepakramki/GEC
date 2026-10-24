@@ -4,6 +4,7 @@ import { Header } from '../components/Header';
 import { HeroVisualCard } from '../components/HeroVisualCard';
 import { HeroTextSection } from '../components/HeroTextSection';
 import { HeroPromoModal } from '../components/HeroPromoModal';
+import { PromoBannerSection } from '../components/PromoBannerSection';
 import { VideoModal } from '../components/VideoModal';
 import { AccountModal } from '../components/AccountModal';
 import { DownloadModal } from '../components/DownloadModal';
@@ -77,6 +78,9 @@ export const HomePage = () => {
           </div>
         </div>
       </main>
+
+      {/* Full-Cover Promo Banners Swipe Section (BingX & TaskOn) */}
+      <ScrollReveal><PromoBannerSection /></ScrollReveal>
 
       {/* Mission & Vision Section */}
       <ScrollReveal><MissionVisionSection /></ScrollReveal>
