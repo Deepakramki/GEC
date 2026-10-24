@@ -92,30 +92,30 @@ export const PromoBannerSection: React.FC = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Full-Cover Slide Container */}
-      <div className="relative w-full h-[260px] sm:h-[380px] md:h-[460px] lg:h-[520px] xl:h-[580px] overflow-hidden">
+      {/* 16:9 Aspect Ratio Slide Container (Fits Native Poster Dimensions Exactly Without Scaling) */}
+      <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-950">
         {/* Sliding Track */}
         <div
           className="flex w-full h-full transition-transform duration-700 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {PROMO_SLIDES.map((slide) => (
-            <div key={slide.id} className="w-full h-full shrink-0 relative overflow-hidden">
+            <div key={slide.id} className="w-full h-full shrink-0 relative overflow-hidden bg-slate-950">
               <a
                 href={slide.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full h-full cursor-pointer relative"
               >
-                {/* Full-Cover Image */}
+                {/* Fit Image Without Scaling */}
                 <img
                   src={slide.image}
                   alt={slide.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.01]"
+                  className="w-full h-full object-contain"
                 />
 
                 {/* Subtle Edge Lighting & Contrast Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
               </a>
             </div>
           ))}
