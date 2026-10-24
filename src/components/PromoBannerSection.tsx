@@ -23,12 +23,12 @@ const PROMO_SLIDES: PromoSlide[] = [
   },
   {
     id: 'taskon',
-    title: 'Community Quest Campaign',
-    subtitle: 'Complete tasks on TaskOn to earn GreenCoin rewards',
+    title: 'Trade GEC & Get Unlimited Bonus',
+    subtitle: 'Join GEC Spot Trading competition on BingX & unlock up to 100% Bonus',
     image: '/banners/taskon-campaign.png',
-    alt: 'GreenCoin x TaskOn Community Quest Campaign',
+    alt: 'GreenCoin x TaskOn Spot Trading Competition - Trade GEC & Get Unlimited Bonus',
     link: 'https://taskon.xyz',
-    ctaText: 'Participate Now',
+    ctaText: 'Join Competition',
   },
 ];
 
