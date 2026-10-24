@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Header } from '../components/Header';
 import { HeroVisualCard } from '../components/HeroVisualCard';
 import { HeroTextSection } from '../components/HeroTextSection';
+import { HeroPromoModal } from '../components/HeroPromoModal';
 import { VideoModal } from '../components/VideoModal';
 import { AccountModal } from '../components/AccountModal';
 import { DownloadModal } from '../components/DownloadModal';
@@ -35,6 +36,15 @@ export const HomePage = () => {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [accountModalOpen, setAccountModalOpen] = useState(false);
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
+  const [promoModalOpen, setPromoModalOpen] = useState(false);
+
+  // Auto-open promo popup after the loader completes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPromoModalOpen(true);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#f0f2f5] text-slate-900 flex flex-col items-center selection:bg-slate-900 selection:text-white p-4 sm:p-6 lg:p-8">
@@ -90,6 +100,11 @@ export const HomePage = () => {
       <ScrollReveal><FooterSection /></ScrollReveal>
 
       {/* Interactive Modals */}
+      <HeroPromoModal
+        isOpen={promoModalOpen}
+        onClose={() => setPromoModalOpen(false)}
+      />
+
       <VideoModal
         isOpen={videoModalOpen}
         onClose={() => setVideoModalOpen(false)}
