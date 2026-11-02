@@ -68,8 +68,7 @@ export const FooterSection: React.FC = () => {
               <h4 className="font-medium text-slate-900 mb-5 text-[14px]">Listed Platforms</h4>
               <ul className="flex flex-col gap-3.5">
                 <li><a href="https://coinmarketcap.com/currencies/greenen/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">CoinMarketCap</a></li>
-                <li><a href="https://vindax.com/exchange?symbol=GEC_USDT" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">VinDAX</a></li>
-                <li><a href="https://www.bifinance.com/en_us/trade?symbol=GEC/USDT" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">BiFinance</a></li>
+                <li><a href="https://bingx.com/en/spot/GECUSDT" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">BingX</a></li>
               </ul>
             </div>
 
