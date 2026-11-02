@@ -7,21 +7,21 @@ export const AllocationSection: React.FC = () => {
     <section id="allocation" className="w-full max-w-[1400px] mx-auto mt-6 bg-white rounded-[40px] p-6 sm:p-10 lg:p-12 shadow-sm border border-slate-200/50 relative overflow-hidden">
       
       {/* Header Area */}
-      <div className="flex justify-between items-center mb-16 relative z-10">
+      <div className="flex justify-between items-center mb-8 sm:mb-16 relative z-10">
         <div className="flex items-center gap-4">
           <h2 className="text-3xl sm:text-[32px] font-medium text-slate-900 leading-none tracking-tight">Allocation Detail</h2>
         </div>
         <div className="w-8 h-8 rounded-full border-[3px] border-slate-200 border-t-slate-800"></div>
       </div>
 
-      <div className="relative flex flex-col lg:flex-row items-center justify-between min-h-[600px] gap-16 lg:gap-0">
+      <div className="relative flex flex-col lg:flex-row items-center justify-between min-h-0 lg:min-h-[600px] gap-12 lg:gap-0">
         
         {/* Left Side: Stats */}
-        <div className="w-full lg:w-[35%] flex flex-col gap-10 relative z-10">
+        <div className="w-full lg:w-[35%] flex flex-col gap-8 sm:gap-10 relative z-10">
           
           {/* Item 1 */}
-          <div className="relative group pr-8">
-            <h3 className="text-[48px] font-medium text-slate-900 leading-none tracking-tighter mb-3">150M</h3>
+          <div className="relative group pr-0 lg:pr-8">
+            <h3 className="text-[40px] sm:text-[48px] font-medium text-slate-900 leading-none tracking-tighter mb-2 sm:mb-3">150M</h3>
             <p className="text-[13px] text-slate-500 leading-relaxed mb-3 max-w-[280px]">
               Team allocation for core development, marketing, and operations over a vesting period.
             </p>
@@ -35,8 +35,8 @@ export const AllocationSection: React.FC = () => {
           </div>
 
           {/* Item 2 */}
-          <div className="relative group pr-8">
-            <h3 className="text-[48px] font-medium text-slate-900 leading-none tracking-tighter mb-3">200M</h3>
+          <div className="relative group pr-0 lg:pr-8">
+            <h3 className="text-[40px] sm:text-[48px] font-medium text-slate-900 leading-none tracking-tighter mb-2 sm:mb-3">200M</h3>
             <p className="text-[13px] text-slate-500 leading-relaxed mb-3 max-w-[280px]">
               Treasury funds reserved for future protocol development, grants, and expenses.
             </p>
@@ -50,8 +50,8 @@ export const AllocationSection: React.FC = () => {
           </div>
 
           {/* Item 3 */}
-          <div className="relative group pr-8">
-            <h3 className="text-[48px] font-medium text-slate-900 leading-none tracking-tighter mb-3">200M</h3>
+          <div className="relative group pr-0 lg:pr-8">
+            <h3 className="text-[40px] sm:text-[48px] font-medium text-slate-900 leading-none tracking-tighter mb-2 sm:mb-3">200M</h3>
             <p className="text-[13px] text-slate-500 leading-relaxed mb-3 max-w-[280px]">
               Ecosystem growth, liquidity mining rewards, and incentives to drive adoption.
             </p>
@@ -65,8 +65,8 @@ export const AllocationSection: React.FC = () => {
           </div>
 
           {/* Item 4 */}
-          <div className="relative group pr-8">
-            <h3 className="text-[48px] font-medium text-slate-900 leading-none tracking-tighter mb-3">100M</h3>
+          <div className="relative group pr-0 lg:pr-8">
+            <h3 className="text-[40px] sm:text-[48px] font-medium text-slate-900 leading-none tracking-tighter mb-2 sm:mb-3">100M</h3>
             <p className="text-[13px] text-slate-500 leading-relaxed mb-3 max-w-[280px]">
               Marketing and community initiatives to build brand awareness globally.
             </p>
@@ -81,33 +81,33 @@ export const AllocationSection: React.FC = () => {
         </div>
 
         {/* Center Graphic Area */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] pointer-events-none flex items-center justify-center opacity-30 lg:opacity-100 scale-75 sm:scale-100">
+        <div className="relative lg:absolute order-first lg:order-none lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[400px] lg:h-[400px] mx-auto my-6 lg:my-0 flex items-center justify-center opacity-100 shrink-0 pointer-events-none">
           
           {/* Dashed outer circle */}
           <div className="absolute inset-0 rounded-full border border-dashed border-[#0055ff]/40 animate-[spin_120s_linear_infinite]"></div>
 
           {/* Inner Ray Circle */}
-          <div className="absolute inset-8 rounded-full flex items-center justify-center">
+          <div className="absolute inset-5 sm:inset-7 lg:inset-8 rounded-full flex items-center justify-center">
             {Array.from({ length: 72 }).map((_, i) => (
-              <div key={i} className="absolute w-full h-[3px] flex justify-end" style={{ transform: `rotate(${i * 5}deg)` }}>
-                <div className="w-[35px] h-full bg-[#0055ff]/40 rounded-full"></div>
+              <div key={i} className="absolute w-full h-[2.5px] sm:h-[3px] flex justify-end" style={{ transform: `rotate(${i * 5}deg)` }}>
+                <div className="w-[24px] sm:w-[30px] lg:w-[35px] h-full bg-[#0055ff]/40 rounded-full"></div>
               </div>
             ))}
           </div>
 
-          {/* Massive right-aligned glow */}
-          <div className="absolute right-[-100px] w-[350px] h-[350px] bg-[#0055ff] rounded-full blur-[80px] opacity-60"></div>
+          {/* Background glow: centered on mobile, right-aligned on desktop */}
+          <div className="absolute inset-0 m-auto lg:inset-auto lg:right-[-100px] w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] lg:w-[350px] lg:h-[350px] bg-[#0055ff] rounded-full blur-[50px] sm:blur-[70px] lg:blur-[80px] opacity-40 lg:opacity-60"></div>
           
           {/* Total Supply Info inside circle */}
-          <div className="relative z-10 flex flex-col items-center justify-center w-[180px] h-[180px] bg-white/40 backdrop-blur-md rounded-full shadow-[0_8px_32px_rgba(0,85,255,0.15)] border border-white/60">
-             <span className="text-xs font-medium text-slate-700 mb-1 uppercase tracking-wider">Total Supply</span>
-             <span className="text-3xl font-black text-slate-900 tracking-tighter">1,000M</span>
-             <span className="text-xs font-bold text-[#0055ff] mt-1 tracking-widest">GEC</span>
+          <div className="relative z-10 flex flex-col items-center justify-center w-[140px] h-[140px] sm:w-[170px] sm:h-[170px] lg:w-[180px] lg:h-[180px] bg-white/70 lg:bg-white/40 backdrop-blur-md rounded-full shadow-[0_8px_32px_rgba(0,85,255,0.15)] border border-white/80 lg:border-white/60">
+             <span className="text-[10px] sm:text-xs font-medium text-slate-700 mb-0.5 sm:mb-1 uppercase tracking-wider">Total Supply</span>
+             <span className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tighter">1,000M</span>
+             <span className="text-[10px] sm:text-xs font-bold text-[#0055ff] mt-0.5 sm:mt-1 tracking-widest">GEC</span>
           </div>
         </div>
 
         {/* Right Side: Cards */}
-        <div className="w-full lg:w-[32%] flex flex-col gap-6 relative z-10 lg:pl-8">
+        <div className="w-full lg:w-[32%] flex flex-col gap-4 sm:gap-6 relative z-10 lg:pl-8">
           
           <AllocationCard 
             title="Strategic Partners"
