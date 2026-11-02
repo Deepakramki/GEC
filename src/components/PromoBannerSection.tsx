@@ -18,7 +18,7 @@ const PROMO_SLIDES: PromoSlide[] = [
     subtitle: '$GEC / USDT Officially Listed on BingX',
     image: '/banners/bingx-listing.png',
     alt: '$GEC / USDT Officially Listed on BingX',
-    link: 'https://bingx.com',
+    link: 'https://bingx.com/en/spot/GECUSDT',
     ctaText: 'Trade on BingX',
   },
   {
@@ -27,7 +27,7 @@ const PROMO_SLIDES: PromoSlide[] = [
     subtitle: 'Join GEC Spot Trading competition on BingX & unlock up to 100% Bonus',
     image: '/banners/taskon-campaign.png',
     alt: 'GreenCoin x TaskOn Spot Trading Competition - Trade GEC & Get Unlimited Bonus',
-    link: 'https://taskon.xyz',
+    link: 'https://taskon.xyz/quest/131467697',
     ctaText: 'Join Competition',
   },
 ];

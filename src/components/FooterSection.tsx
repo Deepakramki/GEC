@@ -58,14 +58,6 @@ export const FooterSection: React.FC = () => {
                   info@greenen.co.uk
                 </a>
               </div>
-              <div>
-                <h4 className="font-medium text-slate-900 mb-1 text-[14px]">Address</h4>
-                <p className="text-slate-500 text-[13px] leading-relaxed max-w-[250px]">
-                  Meydan Grandstant , 6th Floor,<br />
-                  Meydan Road , Nad Al Sheba<br />
-                  Dubai UAE
-                </p>
-              </div>
             </div>
           </div>
 
