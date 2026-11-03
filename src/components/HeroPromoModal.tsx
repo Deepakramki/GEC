@@ -24,14 +24,6 @@ const SLIDES = [
     link: 'https://bingx.com/en/spot/GECUSDT',
     ctaText: 'Trade on BingX',
   },
-  {
-    id: 'taskon',
-    title: 'Trade GEC & Get Unlimited Bonus',
-    image: '/banners/taskon-campaign.png',
-    alt: 'GreenCoin x TaskOn Spot Trading Competition - Trade GEC & Get Unlimited Bonus',
-    link: 'https://taskon.xyz/quest/131467697',
-    ctaText: 'Join Competition',
-  },
 ];
 
 export const HeroPromoModal: React.FC<HeroPromoModalProps> = ({ isOpen, onClose }) => {

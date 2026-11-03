@@ -31,15 +31,6 @@ const PROMO_SLIDES: PromoSlide[] = [
     link: 'https://bingx.com/en/spot/GECUSDT',
     ctaText: 'Trade on BingX',
   },
-  {
-    id: 'taskon',
-    title: 'Trade GEC & Get Unlimited Bonus',
-    subtitle: 'Join GEC Spot Trading competition on BingX & unlock up to 100% Bonus',
-    image: '/banners/taskon-campaign.png',
-    alt: 'GreenCoin x TaskOn Spot Trading Competition - Trade GEC & Get Unlimited Bonus',
-    link: 'https://taskon.xyz/quest/131467697',
-    ctaText: 'Join Competition',
-  },
 ];
 
 export const PromoBannerSection: React.FC = () => {

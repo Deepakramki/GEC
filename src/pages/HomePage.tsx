@@ -79,7 +79,7 @@ export const HomePage = () => {
         </div>
       </main>
 
-      {/* Full-Cover Promo Banners Swipe Section (BingX & TaskOn) */}
+      {/* Full-Cover Promo Banners Swipe Section */}
       <ScrollReveal><PromoBannerSection /></ScrollReveal>
 
       {/* Mission & Vision Section */}
