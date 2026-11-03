@@ -80,6 +80,7 @@ export const FooterSection: React.FC = () => {
                 <li><Link to="/#roadmap" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">Roadmap</Link></li>
                 <li><Link to="/whitepaper" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">Whitepaper</Link></li>
                 <li><Link to="/#allocation" className="text-slate-500 hover:text-slate-900 text-[13px] transition-colors">Allocation</Link></li>
+                <li><Link to="/rewards" className="text-emerald-600 hover:text-emerald-700 font-medium text-[13px] transition-colors">Rewards Campaign</Link></li>
               </ul>
             </div>
 

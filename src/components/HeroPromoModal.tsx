@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ExternalLink, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface HeroPromoModalProps {
   isOpen: boolean;
@@ -7,6 +8,14 @@ interface HeroPromoModalProps {
 }
 
 const SLIDES = [
+  {
+    id: 'hold-and-earn',
+    title: 'Hold GEC. Earn Rewards. Grow Together.',
+    image: '/banners/hold-and-earn.png',
+    alt: 'GreenCoin Hold GEC & Earn Rewards Campaign',
+    link: '/rewards',
+    ctaText: 'Join Campaign',
+  },
   {
     id: 'bingx',
     title: '$GEC Officially Listed on BingX',
@@ -127,14 +136,10 @@ export const HeroPromoModal: React.FC<HeroPromoModalProps> = ({ isOpen, onClose 
             className="flex w-full h-full transition-transform duration-600 ease-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {SLIDES.map((slide) => (
-              <div key={slide.id} className="w-full h-full shrink-0 relative">
-                <a
-                  href={slide.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full h-full cursor-pointer group"
-                >
+            {SLIDES.map((slide) => {
+              const isExternal = slide.link.startsWith('http');
+              const linkContent = (
+                <>
                   <img
                     src={slide.image}
                     alt={slide.alt}
@@ -142,9 +147,32 @@ export const HeroPromoModal: React.FC<HeroPromoModalProps> = ({ isOpen, onClose 
                   />
                   {/* Subtle Gradient Shadow at bottom on Hover */}
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                </a>
-              </div>
-            ))}
+                </>
+              );
+
+              return (
+                <div key={slide.id} className="w-full h-full shrink-0 relative">
+                  {isExternal ? (
+                    <a
+                      href={slide.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full h-full cursor-pointer group"
+                    >
+                      {linkContent}
+                    </a>
+                  ) : (
+                    <Link
+                      to={slide.link}
+                      onClick={onClose}
+                      className="block w-full h-full cursor-pointer group"
+                    >
+                      {linkContent}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Left Arrow Button */}
@@ -191,15 +219,26 @@ export const HeroPromoModal: React.FC<HeroPromoModalProps> = ({ isOpen, onClose 
           </div>
 
           {/* Direct CTA Action Button */}
-          <a
-            href={currentSlide.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-950 text-xs sm:text-sm font-semibold transition-all shadow-md hover:scale-105 active:scale-95"
-          >
-            <span>{currentSlide.ctaText}</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+          {currentSlide.link.startsWith('http') ? (
+            <a
+              href={currentSlide.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-950 text-xs sm:text-sm font-semibold transition-all shadow-md hover:scale-105 active:scale-95"
+            >
+              <span>{currentSlide.ctaText}</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          ) : (
+            <Link
+              to={currentSlide.link}
+              onClick={onClose}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-950 text-xs sm:text-sm font-semibold transition-all shadow-md hover:scale-105 active:scale-95"
+            >
+              <span>{currentSlide.ctaText}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          )}
         </div>
       </div>
     </div>

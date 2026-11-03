@@ -4,6 +4,7 @@ import { HomePage } from './pages/HomePage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { WhitepaperPage } from './pages/WhitepaperPage';
+import { RewardsPage } from './pages/RewardsPage';
 import { Loader } from './components/Loader';
 
 const ScrollToAnchor = () => {
@@ -36,6 +37,8 @@ export default function App() {
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/whitepaper" element={<WhitepaperPage />} />
+        <Route path="/rewards" element={<RewardsPage />} />
+        <Route path="/hold-and-earn" element={<RewardsPage />} />
       </Routes>
     </Router>
   );

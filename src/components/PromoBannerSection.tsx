@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface PromoSlide {
   id: string;
@@ -12,6 +13,15 @@ interface PromoSlide {
 }
 
 const PROMO_SLIDES: PromoSlide[] = [
+  {
+    id: 'hold-and-earn',
+    title: 'Hold GEC. Earn Rewards.',
+    subtitle: 'Hold GEC on BingX Spot & Earn Exclusive GreenCoin Rewards',
+    image: '/banners/hold-and-earn.png',
+    alt: 'GreenCoin Hold GEC & Earn Rewards Campaign',
+    link: '/rewards',
+    ctaText: 'Join Campaign',
+  },
   {
     id: 'bingx',
     title: 'BingX Official Listing',
@@ -102,14 +112,10 @@ export const PromoBannerSection: React.FC = () => {
           className="flex w-full h-full transition-transform duration-700 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {PROMO_SLIDES.map((slide) => (
-            <div key={slide.id} className="w-full h-full shrink-0 relative overflow-hidden bg-slate-950">
-              <a
-                href={slide.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-full cursor-pointer relative"
-              >
+          {PROMO_SLIDES.map((slide) => {
+            const isExternal = slide.link.startsWith('http');
+            const linkContent = (
+              <>
                 {/* Full-bleed image matching 1024x552 without any letterbox black space */}
                 <img
                   src={slide.image}
@@ -119,9 +125,31 @@ export const PromoBannerSection: React.FC = () => {
 
                 {/* Bottom Shadow Only for Indicator/CTA Readability (Top edge remains completely clean) */}
                 <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none" />
-              </a>
-            </div>
-          ))}
+              </>
+            );
+
+            return (
+              <div key={slide.id} className="w-full h-full shrink-0 relative overflow-hidden bg-slate-950">
+                {isExternal ? (
+                  <a
+                    href={slide.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full h-full cursor-pointer relative"
+                  >
+                    {linkContent}
+                  </a>
+                ) : (
+                  <Link
+                    to={slide.link}
+                    className="block w-full h-full cursor-pointer relative"
+                  >
+                    {linkContent}
+                  </Link>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {/* Left Arrow Button */}
@@ -167,15 +195,25 @@ export const PromoBannerSection: React.FC = () => {
           </div>
 
           {/* Action Button */}
-          <a
-            href={currentSlide.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pointer-events-auto inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/95 hover:bg-white text-slate-950 font-semibold text-xs sm:text-sm transition-all shadow-xl backdrop-blur-md hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <span>{currentSlide.ctaText}</span>
-            <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-          </a>
+          {currentSlide.link.startsWith('http') ? (
+            <a
+              href={currentSlide.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pointer-events-auto inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/95 hover:bg-white text-slate-950 font-semibold text-xs sm:text-sm transition-all shadow-xl backdrop-blur-md hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span>{currentSlide.ctaText}</span>
+              <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            </a>
+          ) : (
+            <Link
+              to={currentSlide.link}
+              className="pointer-events-auto inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/95 hover:bg-white text-slate-950 font-semibold text-xs sm:text-sm transition-all shadow-xl backdrop-blur-md hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span>{currentSlide.ctaText}</span>
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            </Link>
+          )}
         </div>
       </div>
     </section>
